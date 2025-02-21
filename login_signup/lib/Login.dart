@@ -45,19 +45,33 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Login',
-              style: TextStyle(
-                color: Colors.white,
-              )),
-          backgroundColor: Colors.grey[600],
-          centerTitle: true,
-        ),
+        // backgroundColor: Colors.black,
+        // ----- appBar -----------
+        // appBar: AppBar(
+        //   title: Text('Login',
+        //       style: TextStyle(
+        //         color: Colors.white,
+        //       )),
+        //   backgroundColor: Colors.black,
+        //   centerTitle: true,
+        // ),
+        // ----- appBar -----------
         body: Padding(
             padding: EdgeInsets.all(30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text('Login',
+                    style: TextStyle(
+                      fontSize: 35,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+                SizedBox(
+                  height: 20,
+                ),
+
+                // Username field
                 TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -67,16 +81,28 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 20,
                 ),
+
+                // Password field
                 TextField(
-                    decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: 'Password',
-                )),
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      labelText: 'Password'),
+                  obscureText: true,
+                ),
+
                 SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(onPressed: () {}, child: Text('Login'))
+                SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text('Login'),
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                      ),
+                    )),
               ],
             )));
   }
