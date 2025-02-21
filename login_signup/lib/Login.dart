@@ -44,12 +44,40 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          child: Text('Login Page'),
-        )
-      ],
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Login',
+              style: TextStyle(
+                color: Colors.white,
+              )),
+          backgroundColor: Colors.grey[600],
+          centerTitle: true,
+        ),
+        body: Padding(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      labelText: 'Username'),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                    decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: 'Password',
+                )),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(onPressed: () {}, child: Text('Login'))
+              ],
+            )));
   }
 }
