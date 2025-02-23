@@ -4,6 +4,6 @@ import 'package:login_signup/Login.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Signup(),
+    home: Login(),
   ));
 }

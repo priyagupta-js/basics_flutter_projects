@@ -59,6 +59,21 @@ class Signup extends StatelessWidget {
                 onPressed: () {},
                 child: Text('Register'),
               ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Already have a account?"),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Login"),
+                )
+              ],
             )
           ],
         ),

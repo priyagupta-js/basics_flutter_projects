@@ -1,43 +1,9 @@
-// import 'package:flutter/material.dart';
-
-// class Login extends StatelessWidget {
-//   const Login({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: Column(
-//       children: [
-//         Container(
-//           color: Colors.amberAccent,
-//           padding: EdgeInsets.all(10),
-//           margin: EdgeInsets.all(10),
-//           child: Text(
-//             'Login',
-//             style: TextStyle(
-//               color: Colors.white,
-//               fontSize: 25,
-//               fontWeight: FontWeight.bold,
-//               letterSpacing: 2,
-//             ),
-//           ),
-//         ),
-//         Container(
-//           child: Text('username'),
-//         ),
-//         Container(
-//           child: Text('Password'),
-//         ),
-//       ],
-//     ));
-//   }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:login_signup/Signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
-
+  @override
   State<Login> createState() => _LoginState();
 }
 
@@ -98,11 +64,30 @@ class _LoginState extends State<Login> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text('Login'),
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 20),
                       ),
+                      child: Text('Login'),
                     )),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have a account?"),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Signup()),
+                        );
+                      },
+                      child: Text("Register"),
+                    )
+                  ],
+                )
               ],
             )));
   }
