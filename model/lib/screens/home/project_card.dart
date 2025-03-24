@@ -13,20 +13,22 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
         child: Row(
           children: [
             Image.asset('assets/img/category/${project.category.image}',
                 width: 80),
             const SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StyledHeading(project.title),
-                StyledText(project.category.title),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StyledHeading(project.title),
+                  StyledText(project.category.title),
+                ],
+              ),
             ),
-            const Expanded(child: SizedBox()),
+            // Expanded(child: SizedBox()),
             IconButton(
               onPressed: () {
                 Navigator.push(

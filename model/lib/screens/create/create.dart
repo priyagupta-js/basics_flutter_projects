@@ -55,6 +55,7 @@ class _CreateState extends State<Create> {
               actionsAlignment: MainAxisAlignment.center,
             );
           });
+      return;
     }
     if (_descriptionController.text.trim().isEmpty) {
       // show error dialog box
@@ -74,6 +75,7 @@ class _CreateState extends State<Create> {
               actionsAlignment: MainAxisAlignment.center,
             );
           });
+      return;
     }
     projects.add(Project(
         title: _titleController.text.trim(),
