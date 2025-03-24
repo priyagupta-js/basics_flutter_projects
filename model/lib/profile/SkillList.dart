@@ -14,19 +14,23 @@ class SkillList extends StatefulWidget {
 
 class _SkillListState extends State<SkillList> {
   late List<Skill> availableSkills;
-  late Skill selectedSkill;
+  Skill? selectedSkill; // Use nullable Skill
 
   @override
   void initState() {
+    super.initState();
+
+    // Get available skills based on project category
     availableSkills = allSkills.where((skill) {
       return skill.projectCategory == widget.project.category;
     }).toList();
-    super.initState();
-    if (widget.project.skills.isEmpty) {
-      selectedSkill = availableSkills[0];
-    }
-    if (widget.project.skills.isNotEmpty) {
-      selectedSkill = widget.project.skills.first;
+
+    if (availableSkills.isNotEmpty) {
+      if (widget.project.skills.isNotEmpty) {
+        selectedSkill = widget.project.skills.first;
+      } else {
+        selectedSkill = availableSkills[0];
+      }
     }
   }
 
@@ -44,33 +48,35 @@ class _SkillListState extends State<SkillList> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              children: availableSkills.map((skill) {
-                return Container(
-                  margin: EdgeInsets.all(6),
-                  padding: EdgeInsets.all(2),
-                  color: skill == selectedSkill
-                      ? const Color.fromARGB(255, 255, 0, 0)
-                      : Colors.transparent,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        widget.project.updateSkill(skill);
-                        selectedSkill = skill;
-                      });
-                    },
-                    child: Image.asset(
-                      'assets/img/skills/${skill.image}',
-                      width: 70,
+            // Show message if no skills are available
+            if (availableSkills.isNotEmpty)
+              Row(
+                children: availableSkills.map((skill) {
+                  return Container(
+                    margin: EdgeInsets.all(6),
+                    padding: EdgeInsets.all(2),
+                    color: skill == selectedSkill
+                        ? const Color.fromARGB(255, 255, 0, 0)
+                        : Colors.transparent,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          widget.project.updateSkill(skill);
+                          selectedSkill = skill;
+                        });
+                      },
+                      child: Image.asset(
+                        'assets/img/skills/${skill.image}',
+                        width: 70,
+                      ),
                     ),
-                  ),
-                );
-              }).toList(),
-            ),
+                  );
+                }).toList(),
+              ),
             SizedBox(
               height: 10,
             ),
-            StyledText(selectedSkill.name),
+            if (selectedSkill != null) StyledText(selectedSkill!.name),
           ],
         ),
       ),

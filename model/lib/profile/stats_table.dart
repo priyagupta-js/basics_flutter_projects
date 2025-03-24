@@ -27,9 +27,11 @@ class _StatsTableState extends State<StatsTable> {
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 150,
-                      child: StyledHeading(stat['title']!),
+                    Expanded(
+                      child: SizedBox(
+                        width: 150,
+                        child: StyledHeading(stat['title']!),
+                      ),
                     ),
                     SizedBox(
                       width: 100,
