@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:model/model/project.dart';
+import 'package:model/profile/SkillList.dart';
+import 'package:model/profile/stats_table.dart';
+import 'package:model/shared/styles_button.dart';
 import 'package:model/shared/shared_text.dart';
 import 'package:model/theme.dart';
 
@@ -42,9 +45,44 @@ class Profile extends StatelessWidget {
                     ),
                   )
                 ]),
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: Icon(
+                  Icons.code,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [StatsTable(project), SkillList(project)],
+                ),
+              ),
+              StyledButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: StyledHeading('Project Saved Successfully'),
+                      showCloseIcon: true,
+                      duration: Duration(seconds: 3),
+                      backgroundColor: AppColors.secondaryColor,
+                    ));
+                  },
+                  child: StyledHeading('Save Project')),
+              SizedBox(
+                height: 20,
               )
             ],
           ),
         ));
   }
 }
+
+
+
+// ------------------------------------//
+// citations || 10 || up || down // ---> row 1
+// downloads || 10 || up || down // ---> row 2
+// views || 10 || up || down // ---> row 3
+// collaborations || 10 || up || down // ---> row 4
+// ------------------------------------//
