@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_signup/Signup.dart';
+import 'package:login_signup/Dashboard.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -8,6 +9,26 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _UsernameController = TextEditingController();
+  final _PasswordController = TextEditingController();
+
+  void Login() {
+    final username = _UsernameController.text;
+    final password = _PasswordController.text;
+    if (username.isNotEmpty && password.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Dashboard(username: username),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter both username and password')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +60,7 @@ class _LoginState extends State<Login> {
 
                 // Username field
                 TextField(
+                  controller: _UsernameController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -50,6 +72,7 @@ class _LoginState extends State<Login> {
 
                 // Password field
                 TextField(
+                  controller: _PasswordController,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -63,7 +86,7 @@ class _LoginState extends State<Login> {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: Login,
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 20),
                       ),
